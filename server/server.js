@@ -15,8 +15,8 @@ app.use(bodyParser.json());
 //Middleware Routes
 const authRoute = require("./routes/auth");
 const productsRoute = require("./routes/products");
-app.use("/auth", authRoute);
-app.use("/products", productsRoute);
+app.use("/api/v1/auth", authRoute);
+app.use("/api/v1/products", productsRoute);
 
 // Routes
 app.get("/", (req, res) => {
