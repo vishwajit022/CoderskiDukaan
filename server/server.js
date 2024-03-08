@@ -13,7 +13,9 @@ const PORT = process.env.PORT;
 app.use(cors());
 app.use(bodyParser.json());
 //Middleware Routes
+const authRoute = require("./routes/auth");
 const productsRoute = require("./routes/products");
+app.use("/auth", authRoute);
 app.use("/products", productsRoute);
 
 // Routes
