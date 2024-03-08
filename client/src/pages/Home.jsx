@@ -3,14 +3,21 @@ import Loader from "../components/Loader";
 import Nav from "../components/Nav";
 import Categories from "../components/Categories";
 import ProductList from "../components/ProductList";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchProductData } from "../redux/productsReducer";
+import { categoryAsync } from "../redux/categoryReducer";
 
 function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
+  const d = useDispatch();
+
   useEffect(() => {
     const delay = setTimeout(() => {
       setIsLoading(false);
-    }, 20000);
+    }, 12000);
+    d(fetchProductData());
+    d(categoryAsync());
 
     return () => clearTimeout(delay);
   }, []);

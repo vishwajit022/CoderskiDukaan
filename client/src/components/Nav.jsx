@@ -8,7 +8,7 @@ function Nav() {
       <div className=" flex items-center  gap-16 text-3xl">
         <div className="font-semibold relative">
           CodeVerse{" "}
-          <div className="absolute right-[-1.5rem] bottom-[-0.3rem]  text-xl text-gray-400">
+          <div className="absolute right-[-1.5rem] bottom-[-0.3rem]  text-xl text-red-500">
             <FaCode />
           </div>{" "}
         </div>
