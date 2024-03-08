@@ -3,8 +3,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
-const User = require("../models/User"); // Import your User model here
-
+const User = require("../models/User");
 const connect = async () => {
   try {
     const URI = process.env.MONGO_URI;
