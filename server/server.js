@@ -15,8 +15,10 @@ app.use(bodyParser.json());
 //Middleware Routes
 const authRoute = require("./routes/auth");
 const productsRoute = require("./routes/products");
+const categoriesRoute = require("./routes/categories.js");
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/products", productsRoute);
+app.use("/api/v1/categories", categoriesRoute);
 
 // Routes
 app.get("/", (req, res) => {
