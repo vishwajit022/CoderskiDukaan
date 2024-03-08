@@ -1,7 +1,9 @@
 // src/components/ProductList.js
 
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import axios from "axios";
+import ProductCard from "./ProductCard";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -22,15 +24,15 @@ const ProductList = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Product List</h1>
-      <ul>
+    <div className="pl-20">
+      <h1 className="text-2xl text-center mb-7 font-semibold ">
+        Everything a coder needs
+      </h1>
+      <motion.div className="flex flex-wrap gap-[4vw]">
         {products.map((product) => (
-          <li key={product._id}>
-            {product.title} - ${product.price}
-          </li>
+          <ProductCard className="flex " key={product._id} props={product} />
         ))}
-      </ul>
+      </motion.div>
     </div>
   );
 };
