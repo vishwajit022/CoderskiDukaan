@@ -68,6 +68,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+//Delete All product
 router.delete("/", async (req, res) => {
   try {
     const deletedProducts = await Product.deleteMany({});
