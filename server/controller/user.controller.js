@@ -60,11 +60,11 @@ exports.getUser = async (req, res) => {
     }
 };
 exports.userId = async (req, res) => {
-    const { userid } = req.body;
+    const { id } = req.body;
 
     try {
         // Find user by username
-        const user = await User.findOne({ id:userid });
+        const user = await User.findOne({ id:id });
 
         
         return res.status(200).json(user);

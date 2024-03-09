@@ -16,7 +16,7 @@ function Categories() {
           Filter
         </div>
         {data.map((e) => (
-          <div key={e} className="badge h-[2rem]  px-4  badge-accent">
+          <div key={e} className="badge h-[2rem]  px-2 md:px-4  badge-base-200">
             {e}
           </div>
         ))}

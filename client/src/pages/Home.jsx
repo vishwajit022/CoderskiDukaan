@@ -14,10 +14,9 @@ function Home() {
 
   useEffect(()=>{
     const CurrentUser = localStorage.getItem('userid');
-    document.title = CurrentUser;
     const fetchUser = async () =>{
       if(CurrentUser){
-        const user = await userId({CurrentUser})
+        const user = await userId({id:CurrentUser})
         d(setData(user));
       }
     }

@@ -3,12 +3,15 @@ import { RiShoppingCartFill } from "react-icons/ri";
 import { MdLocationOn } from "react-icons/md";
 import Login from "./Login";
 import { useSelector } from 'react-redux';
+import { useEffect } from "react";
 
 
 function Nav() {
 
   const user  = useSelector((state) => state.user);
-  console.log(user);
+  useEffect(()=>{
+    document.title = user.data.username;
+  },[])
 
   return (
     <nav>
@@ -50,7 +53,7 @@ function Nav() {
             <div
             onClick={()=>document.getElementById('my_modal_5').showModal()}
             className="hover:bg-base-100 p-2 rounded-sm text-sm ">
-              <div className="font-normal">Hello, User</div>
+              <div className="font-normal">Hello, {user.data.username}</div>
               <div className="font-semibold">Your Account</div>
             </div>
             <div className="text-2xl text-green-400 ">
