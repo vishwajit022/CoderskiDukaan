@@ -3,15 +3,26 @@ import { motion } from "framer-motion";
 import Button from "./Button";
 
 function ProductCard({ props }) {
-  const { category, description, image, price, title } = props;
+  const { image, title, price } = props;
+
+  const containerVariants = {
+    hidden: { scale: 0 },
+    visible: { scale: 1, transition: { duration: 0.5 } },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.2 } },
+  };
 
   return (
     <motion.div
-      initial={{ scale: 0 }}
-      animate={{ scale: 1 }}
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
       className="bg-white flex flex-col items-center justify-center w-[40vh] h-[28vw]"
     >
-      <div className="h-[26vh] ">
+      <motion.div variants={itemVariants} className="h-[26vh]">
         <motion.img
           src={image}
           className="object-contain w-full h-full"
@@ -20,27 +31,19 @@ function ProductCard({ props }) {
           transition={{ duration: 0.5 }}
           alt=""
         />
-      </div>
+      </motion.div>
 
-      <motion.h1
-        className="mt-1 text-center"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-      >
+      <motion.h1 variants={itemVariants} className="mt-1 text-center">
         {title}
       </motion.h1>
       <motion.div
+        variants={itemVariants}
         className="flex justify-center text-center"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
       >
-        Rs.
-        <div className="mb-3 font-bold"> {price}</div>
+        Rs. <div className="mb-3 font-bold">{price}</div>
       </motion.div>
 
-      <Button className="">Add to Cart</Button>
+      <Button>Add to Cart</Button>
     </motion.div>
   );
 }

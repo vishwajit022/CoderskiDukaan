@@ -15,7 +15,7 @@ function Home() {
   useEffect(() => {
     const delay = setTimeout(() => {
       setIsLoading(false);
-    }, 12000);
+    }, 1000);
     d(fetchProductData());
     d(categoryAsync());
 
