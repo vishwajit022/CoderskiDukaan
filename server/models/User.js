@@ -1,6 +1,7 @@
 // ./models/User.js
 
 const mongoose = require("mongoose");
+const { v4: uuidv4 } = require('uuid');
 
 const userSchema = mongoose.Schema({
   username: {
@@ -14,6 +15,10 @@ const userSchema = mongoose.Schema({
   password: {
       type: String,
       required: true
+  },
+  id: {
+    type: String,
+    default: uuidv4()
   }
 },{ timestamps: true });
 

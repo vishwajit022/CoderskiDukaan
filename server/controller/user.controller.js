@@ -45,7 +45,7 @@ exports.getUser = async (req, res) => {
         const isPasswordValid = await bcrypt.compare(password, user.password);
 
         if (!isPasswordValid) {
-            return res.status(401).json({ message: "Invalid credentials" });
+            return res.status(401).json({ message: "Invalid " });
         }
 
         // Generate and send JWT token
@@ -54,6 +54,20 @@ exports.getUser = async (req, res) => {
         });
 
         return res.status(200).json({ user, token });
+    } catch (error) {
+        console.error("Login error:", error.message);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+};
+exports.userId = async (req, res) => {
+    const { userid } = req.body;
+
+    try {
+        // Find user by username
+        const user = await User.findOne({ id:userid });
+
+        
+        return res.status(200).json(user);
     } catch (error) {
         console.error("Login error:", error.message);
         res.status(500).json({ message: "Internal Server Error" });
