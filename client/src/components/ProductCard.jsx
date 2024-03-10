@@ -20,30 +20,30 @@ function ProductCard({ props }) {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="bg-white flex flex-col items-center justify-center w-[40vh] h-[28vw]"
-    >
-      <motion.div variants={itemVariants} className="h-[26vh]">
-        <motion.img
-          src={image}
-          className="object-contain w-full h-full"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          alt=""
-        />
-      </motion.div>
+      className="card w-[21.97rem] bg-base-100 shadow-xl">
 
-      <motion.h1 variants={itemVariants} className="mt-1 text-center">
-        {title}
-      </motion.h1>
-      <motion.div
-        variants={itemVariants}
-        className="flex justify-center text-center"
-      >
-        Rs. <div className="mb-3 font-bold">{price}</div>
-      </motion.div>
-
-      <Button>Add to Cart</Button>
+        <motion.div className="bg-base-300" variants={itemVariants} >
+          <figure>
+            <motion.img 
+            className="w-full h-[23rem]"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            src={image} alt="Shoes" />
+          </figure>
+        </motion.div>
+        
+        <motion.div
+          className="card-body">
+          <motion.h2 variants={itemVariants} className="card-title h-10 ">{title}</motion.h2>
+          <div className="flex" >Rs. <div className="mb-3 font-bold">{price}</div></div>
+          <motion.div
+          variants={itemVariants}
+          className="card-actions flex justify-between">
+            <button className="btn bg-base-300">Buy Now</button>
+            <button className="btn bg-base-300">Add to Cart</button>
+          </motion.div>
+        </motion.div>
     </motion.div>
   );
 }

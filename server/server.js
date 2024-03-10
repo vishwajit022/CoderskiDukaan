@@ -11,10 +11,12 @@ const PORT = process.env.PORT;
 
 // Middleware
 app.use(cors());
-app.use(bodyParser.json());
+
+app.use(bodyParser.json({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 //Middleware Routes
-const authRoute = require("./routes/auth");
-const productsRoute = require("./routes/products");
+const authRoute = require("./routes/auth.js");
+const productsRoute = require("./routes/products.js");
 const categoriesRoute = require("./routes/categories.js");
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/products", productsRoute);

@@ -10,13 +10,13 @@ function Categories() {
 
   return (
     <div>
-      <div className="flex items-center gap-10 p-3">
-        <div className="flex items-center gap-4 text-lg text-black">
+      <div className="flex text-gray-700 dark:text-gray-300 items-center gap-10 p-3">
+        <div className="flex items-center gap-4 text-lg">
           <FaFilter />
           Filter
         </div>
         {data.map((e) => (
-          <div key={e} className="p-2 text-md bg-zinc-100 rounded-2xl">
+          <div key={e} className="badge h-[2rem]  px-2 md:px-4  badge-base-200">
             {e}
           </div>
         ))}
