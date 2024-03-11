@@ -24,7 +24,7 @@
         <li><strong>Razorpay Integration:</strong> Enjoy a smooth and secure payment process through the Razorpay gateway.</li>
     </ul>
     <h2>Collaborators</h2>
-    <p>This project was developed in collaboration with <a href="https://github.com/geniusahayan">@geniusahayan</a>.</p>
+    <p>This project was developed in collaboration with <a href="https://github.com/geniusahyan">@geniusahyan</a>.</p>
     <h2>Getting Started</h2>
     <ol>
         <li>Clone the repository: <code>git clone https://github.com/vishwajit022/CoderskiDukaan</code></li>
