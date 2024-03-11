@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeMart - Your One-Stop Shop for Coder Essentials</title>
 </head>
 <body>
 <img style="width:100vw;" src="https://media0.giphy.com/media/Qetgn06jUuflJNENgc/giphy.gif?cid=6c09b952ukb0c1f93e8y42bhi4vt8oen4mqe05b6mfa5e2ug&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=s" alt="CodeMart Logo" />
