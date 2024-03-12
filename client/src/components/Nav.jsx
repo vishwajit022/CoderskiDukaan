@@ -4,23 +4,30 @@ import { MdLocationOn } from "react-icons/md";
 import Login from "./Login";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 function Nav() {
   const user = useSelector((state) => state.user);
-  useEffect(() => {
-    document.title = user.data.username;
-  }, []);
+  // useEffect(() => {
+  //   document.title = user.data.username;
+  // }, []);
 
   return (
     <nav>
       <div className="navbar bg-base-300 h-[8vh]  ">
         <div className="navbar-start gap-[2rem] text-gray-700 dark:text-gray-200 ">
-          <div className="font-semibold jusc text-[#62F700] text-[22.5px] relative">
+          <motion.div
+            initial={{ scale: 10 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.7 }}
+            className="font-semibold jusc text-[#62F700] text-[22.5px] relative"
+          >
             CodeVerse{" "}
             <div className="absolute right-[-1.5rem] bottom-[-0.3rem]  text-xl text-red-500">
               <FaCode />
             </div>
-          </div>
+          </motion.div>
         </div>
 
         <div className="navbar-center hidden ml-[-10rem] gap-[8rem] text-gray-700 dark:text-gray-200 lg:flex">
@@ -55,14 +62,14 @@ function Nav() {
               <div className="font-normal">Hello, {user.data.username}</div>
               <div className="font-semibold">Your Account</div>
             </div>
-            <div className="text-2xl text-green-400 ">
+            <Link to="/checkout" className="text-2xl text-green-400 ">
               <div className="box-border relative p-2 border-2 border-transparent hover:border-black ">
                 <RiShoppingCartFill className="" />
                 <span className="absolute font-extrabold text-red-500 text-sm bottom-[-0.7rem] right-[-0.5rem]">
                   0
                 </span>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
 

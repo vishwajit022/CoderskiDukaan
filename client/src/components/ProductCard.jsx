@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 import Button from "./Button";
 
 function ProductCard({ props }) {
@@ -14,8 +15,26 @@ function ProductCard({ props }) {
     visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.2 } },
   };
 
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const rect = containerRef.current.getBoundingClientRect();
+      const isVisible = rect.top < window.innerHeight - rect.height / 2;
+
+      if (isVisible) {
+        containerRef.current.style.visibility = "visible";
+        containerRef.current.style.opacity = 1;
+      }
+    };
+
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <motion.div
+      ref={containerRef}
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -35,16 +54,17 @@ function ProductCard({ props }) {
       </motion.div>
 
       <motion.div className="card-body">
-        <motion.h2 variants={itemVariants} className="h-10 card-title ">
+        <motion.h2 variants={itemVariants} className="h-10 mx-auto card-title">
           {title}
         </motion.h2>
         <div className="flex">
-          Rs. <div className="mb-3 font-bold">{price}</div>
+          <div className="mx-auto mb-3 font-bold">Rs. {price}</div>
         </div>
         <motion.div
           variants={itemVariants}
           className="flex justify-between card-actions"
         >
+          <div></div>
           <Button className="btn bg-base-300">Add to Cart</Button>
         </motion.div>
       </motion.div>
