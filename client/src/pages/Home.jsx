@@ -29,8 +29,6 @@ function Home() {
     const delay = setTimeout(() => {
       setIsLoading(false);
     }, 1000);
-    d(fetchProductData());
-    d(categoryAsync());
 
     return () => clearTimeout(delay);
   }, []);

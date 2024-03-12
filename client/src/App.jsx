@@ -4,7 +4,17 @@ import Error from "./pages/Error";
 import Signin from "./components/Authentication/Signin";
 import Product from "./pages/Product";
 import Checkout from "./pages/Checkout";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { fetchProductData } from "./redux/productsReducer";
+import { categoryAsync } from "./redux/categoryReducer";
 function App() {
+  const d = useDispatch();
+  useEffect(() => {
+    d(fetchProductData());
+    d(categoryAsync());
+  }, []);
+
   return (
     <div className="w-full h-full bg-gray-300 App">
       <Routes>
