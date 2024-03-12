@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 
 const jwt = require("jsonwebtoken");
 
-exports.addUser = async (req, res) => {
+exports.signup = async (req, res) => {
   const { email, username, password } = req.body;
 
   try {
@@ -30,7 +30,7 @@ exports.addUser = async (req, res) => {
   }
 };
 
-exports.getUser = async (req, res) => {
+exports.login = async (req, res) => {
   const { username, password } = req.body;
 
   try {
@@ -56,6 +56,7 @@ exports.getUser = async (req, res) => {
         expiresIn: "1h",
       }
     );
+    user.token = token;
 
     return res.status(200).json({ user, token });
   } catch (error) {
