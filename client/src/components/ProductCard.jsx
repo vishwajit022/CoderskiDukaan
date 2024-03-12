@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import Button from "./Button";
+import { Link } from "react-router-dom";
 
 function ProductCard({ props }) {
-  const { image, title, price } = props;
+  const { image, title, price, _id } = props;
+  console.log(_id);
 
   const containerVariants = {
     hidden: { scale: 0 },
@@ -33,7 +35,8 @@ function ProductCard({ props }) {
   }, []);
 
   return (
-    <motion.div
+    <Link
+      to={`/product/${_id}`}
       ref={containerRef}
       variants={containerVariants}
       initial="hidden"
@@ -68,7 +71,7 @@ function ProductCard({ props }) {
           <Button className="btn bg-base-300">Add to Cart</Button>
         </motion.div>
       </motion.div>
-    </motion.div>
+    </Link>
   );
 }
 
