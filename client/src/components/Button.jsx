@@ -1,5 +1,3 @@
-// Button.jsx
-import "./Button.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -16,7 +14,6 @@ function Button({ children }) {
       >
         {children}
       </button>
-      <ToastContainer position="bottom-right" />
     </>
   );
 }
