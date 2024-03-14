@@ -21,7 +21,7 @@ export const cartAsync =
   async (dispatch) => {
     try {
       axios
-        .get(`http://localhost:5000/api/v1/product/${_id}`)
+        .get(`http://localhost:5000/api/v1/products/${_id}`)
         .then((res) => dispatch(cartSlice.actions.cart(res.data)))
         .catch((err) => console.log(err));
     } catch (error) {

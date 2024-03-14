@@ -1,20 +1,24 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { addCart } from "../api/api.cart";
 
-function ProductCard({ props }) {
+function ProductCard({ props, User }) {
   const { image, title, price, _id } = props;
 
   const showToast = () => {
     toast.success("Added to your Cart!");
   };
 
-  const handleAddToCart = (productId) => {
+
+  const handleAddToCart = async (productID) => {
     // Perform the necessary actions to add the product to the cart
     // For demonstration purposes, let's just show the toast notification
+    const addcart = addCart({userId:User.data.id, productId:productID});
+    console.log(addcart);
+
     showToast();
-    console.log(`Product added to cart: ${productId}`);
+    console.log(`Product added to cart: ${productID}`);
   };
 
   return (

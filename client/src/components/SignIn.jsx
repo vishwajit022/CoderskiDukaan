@@ -5,7 +5,7 @@ import { addUser } from '../api/api.user';
 import { motion } from "framer-motion";
 import { FaCode} from "react-icons/fa";
 
-const SignIn = ({logSign, setlogSign, id}) => {
+const SignIn = ({logSign, setlogSign}) => {
     const [email, setemail] = useState('');
     const [username, setusername] = useState('');
     const [password, setpassword] = useState('');
@@ -18,7 +18,6 @@ const SignIn = ({logSign, setlogSign, id}) => {
         setusername('');
         setpassword('');
         setemail('');
-        document.getElementById(id).close();
     }
 
 

@@ -18,9 +18,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const authRoute = require("./routes/auth.js");
 const productsRoute = require("./routes/products.js");
 const categoriesRoute = require("./routes/categories.js");
+const cartRoute = require("./routes/cart.js");
+
+
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/products", productsRoute);
 app.use("/api/v1/categories", categoriesRoute);
+app.use("/api/v1/carts", cartRoute)
 
 // Routes
 app.get("/", (req, res) => {

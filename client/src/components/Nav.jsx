@@ -32,7 +32,7 @@ function Nav() {
           </motion.div>
         </div>
 
-        <div className="navbar-center hidden ml-[-10rem] gap-[8rem] text-gray-700 dark:text-gray-200 lg:flex">
+        <div className="navbar-center hidden ml-[-10rem] gap-[12rem] text-gray-700 dark:text-gray-200 lg:flex">
           <div className="box-border p-2 border-2 border-transparent hover:border-black  ml-[-9rem] flex items-center t ">
             <span className="text-3xl">
               <MdLocationOn />
@@ -82,13 +82,13 @@ function Nav() {
               </div>
               <div className="right w-2/3 relative flex bg-white justify-center items-center h-full">
                 {
-                  logSign ? <Login id={my_modal_5}  logSign={logSign} setlogSign={setlogSign} /> :
-                  <SignIn id={my_modal_5} logSign={logSign} setlogSign={setlogSign} />
+                  logSign ? <Login logSign={logSign} setlogSign={setlogSign} /> :
+                  <SignIn logSign={logSign} setlogSign={setlogSign} />
                 }
-                <div className={`absolute -left-[8rem] ${logSign ? "bg-white" : null} top-40 text-xl p-3 rounded-l-xl px-10`}  >
+                <div onClick={()=>setlogSign(!logSign)} className={`absolute -left-[8rem] ${logSign ? "bg-white" : null} top-40 text-xl p-3 rounded-l-xl px-10`}  >
                   Login
                 </div>
-                <div className={`absolute -left-[8rem] ${!logSign ? "bg-white" : null} top-56 text-xl p-3 rounded-l-xl px-10 `} >
+                <div onClick={()=>setlogSign(!logSign)} className={`absolute -left-[8rem] ${!logSign ? "bg-white" : null} top-56 text-xl p-3 rounded-l-xl px-10 `} >
                   Signin
                 </div>
               </div>
