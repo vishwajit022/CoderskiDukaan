@@ -1,11 +1,14 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+<<<<<<< HEAD
 import { useDispatch, useSelector } from "react-redux";
 import { cartAsync } from "../redux/cartReducer";
+=======
+import { addCart } from "../api/api.cart";
+>>>>>>> release/v1.0.0
 
-function ProductCard({ props }) {
+function ProductCard({ props, User }) {
   const { image, title, price, _id } = props;
 
   const showToast = () => {
@@ -13,12 +16,20 @@ function ProductCard({ props }) {
   };
   const d = useDispatch();
 
-  const handleAddToCart = (productId) => {
+
+  const handleAddToCart = async (productID) => {
     // Perform the necessary actions to add the product to the cart
     // For demonstration purposes, let's just show the toast notification
+    const addcart = addCart({userId:User.data.id, productId:productID});
+    console.log(addcart);
+
     showToast();
+<<<<<<< HEAD
     console.log(`Product added to cart: ${productId}`);
     d(cartAsync(productId));
+=======
+    console.log(`Product added to cart: ${productID}`);
+>>>>>>> release/v1.0.0
   };
 
   return (

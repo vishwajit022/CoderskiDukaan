@@ -19,6 +19,7 @@ export const cartSlice = createSlice({
 export const { addToCart, removeFromCart } = cartSlice.actions;
 export default cartSlice.reducer;
 
+<<<<<<< HEAD
 export const cartAsync = (_id) => async (dispatch) => {
   try {
     const response = await axios.get(
@@ -37,3 +38,17 @@ export const removeFromCartAsync = (_id) => async (dispatch) => {
     console.log(error);
   }
 };
+=======
+export const cartAsync =
+  ({ _id }) =>
+  async (dispatch) => {
+    try {
+      axios
+        .get(`http://localhost:5000/api/v1/products/${_id}`)
+        .then((res) => dispatch(cartSlice.actions.cart(res.data)))
+        .catch((err) => console.log(err));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+>>>>>>> release/v1.0.0
