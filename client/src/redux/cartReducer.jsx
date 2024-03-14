@@ -7,24 +7,25 @@ export const cartSlice = createSlice({
     data: [],
   },
   reducers: {
-    cart: (state, action) => {
-      state.data = action.payload;
+    addToCart: (state, action) => {
+      state.data.push(action.payload); // Push new data into the data array
+    },
+    removeFromCart: (state, action) => {
+      state.data = state.data.filter((item) => item._id !== action.payload); // Remove item from data array
     },
   },
 });
 
-export const { cart } = cartSlice.actions;
+export const { addToCart, removeFromCart } = cartSlice.actions;
 export default cartSlice.reducer;
 
-export const cartAsync =
-  ({ _id }) =>
-  async (dispatch) => {
-    try {
-      axios
-        .get(`http://localhost:5000/api/v1/products/${_id}`)
-        .then((res) => dispatch(cartSlice.actions.cart(res.data)))
-        .catch((err) => console.log(err));
-    } catch (error) {
-      console.log(error);
-    }
-  };
+export const cartAsync = (_id) => async (dispatch) => {
+  try {
+    const response = await axios.get(
+      `http://localhost:5000/api/v1/products/${_id}`
+    );
+    dispatch(addToCart(response.data));
+  } catch (error) {
+    console.log(error);
+  }
+};
