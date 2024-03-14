@@ -11,9 +11,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch } from "react-redux";
 import { cartAsync, removeFromCartAsync } from "../redux/cartReducer";
+import Rating from "react-rating-stars-component";
 
 function Product() {
   const [data, setData] = useState([]);
+  const [rating, setRating] = useState([]);
   const { id } = useParams();
   const showToast = () => {
     toast.success("Added to your Cart!");
@@ -25,7 +27,8 @@ function Product() {
         `http://localhost:5000/api/v1/products/${id}`
       );
       setData(response.data); // Assuming your data is in response.data
-      console.log(data);
+      const roundedRating = Math.round(response.data.rating.rate);
+      setRating(roundedRating);
     } catch (error) {
       console.error("Error fetching product:", error);
     }
@@ -36,6 +39,7 @@ function Product() {
   const handleAddToCart = async (id) => {
     d(cartAsync(id));
     showToast();
+
     console.log(`Product added to cart: ${id}`);
   };
 
@@ -48,14 +52,23 @@ function Product() {
       {/* Render your product data here */}
 
       <div className="flex items-center justify-center pt-[15vh] pl-[5vw] pr-[20vw]">
-        <div className="w-[30vw] mt-[-30vh] h-[30vh] ">
+        <div className="w-[30vw] mt-[-40vh] h-[30vh] ">
           <img src={data.image} alt="" />
         </div>
         <div className="flex flex-col pl-20">
           <h1 className="pt-[8vh] text-4xl font-bold ">{data.title}</h1>
           <div className="pt-10">{data.description}</div>
+          <div className="mt-6">
+            <Rating
+              count={5}
+              value={4} // Pass the rating value as the 'value' prop
+              size={24}
+              activeColor="#ffd700"
+              edit={false} // Set edit to false to make the rating read-only
+            />
+          </div>
+
           <div className="flex pt-10 mx-auto animate-bounce ">
-            {" "}
             Rs. <div className="font-bold">{data.price}</div>
           </div>
           <div className="mx-auto mt-[5vh]">
