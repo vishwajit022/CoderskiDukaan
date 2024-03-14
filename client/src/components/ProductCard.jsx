@@ -11,6 +11,7 @@ function ProductCard({ props, User }) {
   const showToast = () => {
     toast.success("Added to your Cart!");
   };
+
   const d = useDispatch();
 
   const handleAddToCart = async (productID) => {
@@ -18,10 +19,10 @@ function ProductCard({ props, User }) {
     // For demonstration purposes, let's just show the toast notification
     const addcart = addCart({ userId: User.data.id, productId: productID });
     console.log(addcart);
-    d(cartAsync(productID));
 
     showToast();
     console.log(`Product added to cart: ${productID}`);
+    d(cartAsync(productID));
   };
 
   return (
