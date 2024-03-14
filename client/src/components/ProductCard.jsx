@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { cartAsync } from "../redux/cartReducer";
 
 function ProductCard({ props, User }) {
@@ -11,12 +11,19 @@ function ProductCard({ props, User }) {
   const showToast = () => {
     toast.success("Added to your Cart!");
   };
-  const d = useDispatch();
+
+  const dispatch = useDispatch();
 
   const handleAddToCart = async (productID) => {
-    d(cartAsync(productID));
-    showToast();
-    console.log(`Product added to cart: ${productID}`);
+    // Perform the necessary actions to add the product to the cart
+    // For demonstration purposes, let's just show the toast notification
+    try {
+      await dispatch(cartAsync(productID));
+      showToast();
+      console.log(`Product added to cart: ${productID}`);
+    } catch (error) {
+      console.error("Error adding product to cart:", error);
+    }
   };
 
   return (
@@ -43,7 +50,7 @@ function ProductCard({ props, User }) {
       <div className="flex mt-[-20px] justify-between card-actions">
         <div></div>
         <button
-          className="btn  text-white mb-4  relative overflow-hidden hover:bg-[#84542d] bg-[#FB923C] font-bold p-2 rounded-lg  "
+          className="btn text-white mb-4 relative overflow-hidden hover:bg-[#84542d] bg-[#FB923C] font-bold p-2 rounded-lg"
           onClick={() => handleAddToCart(_id)}
         >
           Add to Cart
