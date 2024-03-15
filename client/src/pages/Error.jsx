@@ -8,7 +8,7 @@ const Error = () => {
       <img
         draggable="false"
         className="object-contain w-screen h-screen "
-        src="../../public/routeerror.gif"
+        src="/routeerror.gif"
         alt=""
       />
       <NavLink

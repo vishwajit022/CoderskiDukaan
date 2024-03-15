@@ -17,7 +17,9 @@ export const productsSlice = createSlice({
 
 export const fetchProductData = () => async (dispatch) => {
   try {
-    const response = await axios.get("http://localhost:5000/api/v1/products");
+    const response = await axios.get(
+      "https://coderskidukaan.onrender.com/api/v1/products"
+    );
     dispatch(productsSlice.actions.setData(response.data));
   } catch (error) {
     console.error("Error fetching products:", error.message);
