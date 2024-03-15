@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import {
   FaRegCalendarAlt,
@@ -15,7 +15,7 @@ import Rating from "react-rating-stars-component";
 
 function Product() {
   const [data, setData] = useState([]);
-  const [rating, setRating] = useState([]);
+  const [rating, setRating] = useState([2]);
   const { id } = useParams();
   const showToast = () => {
     toast.success("Added to your Cart!");
@@ -28,6 +28,7 @@ function Product() {
       );
       setData(response.data); // Assuming your data is in response.data
       const roundedRating = Math.round(response.data.rating.rate);
+
       setRating(roundedRating);
     } catch (error) {
       console.error("Error fetching product:", error);
@@ -61,7 +62,7 @@ function Product() {
           <div className="mt-6">
             <Rating
               count={5}
-              value={4} // Pass the rating value as the 'value' prop
+              value={rating} // Pass the rating value as the 'value' prop
               size={24}
               activeColor="#ffd700"
               edit={false} // Set edit to false to make the rating read-only
@@ -71,7 +72,10 @@ function Product() {
           <div className="flex pt-10 mx-auto animate-bounce ">
             Rs. <div className="font-bold">{data.price}</div>
           </div>
-          <div className="mx-auto mt-[5vh]">
+          <div className="mx-auto flex gap-8 mt-[5vh]">
+            <Link to="/" className="bg-[#FB923C] p-2 rounded-md ">
+              Go back
+            </Link>
             <button
               className="bg-[#FB923C] p-2 rounded-md "
               onClick={() => handleAddToCart(id)}

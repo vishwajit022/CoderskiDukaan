@@ -1,7 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { removeFromCart } from "../redux/cartReducer";
 
 const CartItem = ({ item }) => {
+  const dispatch = useDispatch();
+
+  const handleRemoveFromCart = () => {
+    dispatch(removeFromCart(item._id));
+  };
+
   return (
     <div className="flex items-center p-4 mb-4 bg-white rounded-md shadow-md">
       <div className="mr-4">
@@ -22,10 +30,13 @@ const CartItem = ({ item }) => {
           </div>
         </div>
       </div>
-      <div className="font-bold">{item.price}</div>
+      <div className="font-bold">Rs.{item.price}</div>
       <Link to={`/product/${item._id}`} className="ml-4 btn btn-primary">
         Details
       </Link>
+      <button onClick={handleRemoveFromCart} className="ml-4 btn btn-primary">
+        Remove
+      </button>
     </div>
   );
 };
