@@ -48,10 +48,11 @@ const Payment = ({ amount }) => {
   };
 
   return (
-    <div>
-      <h2>Payment</h2>
-      <p>Total Amount: {amount}</p>
-      <button onClick={handlePayment}>Pay Now</button>
+    <div className="flex mt-[10vh] justify-center">
+      <div className=""></div>
+      <button className="bg-[#FB923C] p-2 rounded-lg" onClick={handlePayment}>
+        Pay Now
+      </button>
     </div>
   );
 };

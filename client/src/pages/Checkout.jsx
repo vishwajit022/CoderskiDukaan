@@ -13,8 +13,8 @@ function Checkout() {
   const subtotal = products.reduce((acc, item) => acc + item.price, 0);
 
   return (
-    <div className="flex w-full h-full p-5">
-      <div className="left w-[70%] p-2 px-6 bg-white">
+    <div className="flex w-full h-full p-5 bg-slate-400">
+      <div className="left w-[70%] p-2 px-6 rounded-lg bg-white">
         <div className="flex justify-between py-6">
           <h1 className="text-[4vh] font-bold">Checkout</h1>
           <h1 className="text-[4vh] font-bold">{products.length} items</h1>
@@ -31,11 +31,14 @@ function Checkout() {
           </Link>
         </div>
       </div>
-      <div className="right w-[30%] bg-red-200">
+      <div className="right w-[30%]">
         {/* Subtotal section */}
         <div className="p-4">
-          <h2 className="mb-2 text-xl font-bold">Subtotal</h2>
-          <div className="text-lg font-bold">Rs. {subtotal}</div>
+          <div className="flex justify-between mt-5">
+            <h2 className="mb-2 text-xl font-bold">Subtotal</h2>
+            <div className="text-lg font-bold">Rs. {subtotal}</div>
+          </div>
+
           <Payment amount={subtotal} />
         </div>
       </div>
