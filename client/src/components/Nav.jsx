@@ -5,10 +5,13 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import Login from './Login'
+import Login from "./Login";
 import SignIn from "./SignIn";
 function Nav() {
   const [logSign, setlogSign] = useState(true);
+
+  const p = useSelector((state) => state.cart.data);
+  console.log(p);
 
   const user = useSelector((state) => state.user);
   useEffect(() => {
@@ -17,7 +20,7 @@ function Nav() {
 
   return (
     <nav>
-      <div className="navbar justify-between bg-base-300 h-[8vh]  ">
+      <div className="navbar fixed z-30 justify-between bg-base-300 h-[8vh]  ">
         <div className="navbar-start gap-[2rem] text-gray-700 dark:text-gray-200 ">
           <motion.div
             initial={{ scale: 10 }}
@@ -68,32 +71,42 @@ function Nav() {
               <div className="box-border relative p-2 border-2 border-transparent hover:border-black ">
                 <RiShoppingCartFill className="" />
                 <span className="absolute font-extrabold text-red-500 text-sm bottom-[-0.7rem] right-[-0.5rem]">
-                  0
+                  {p.length}
                 </span>
               </div>
             </Link>
           </div>
         </div>
 
-        <dialog id="my_modal_5" className="modal modal-bottom  sm:modal-middle">
+        <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
           <div className="modal-box !max-w-screen-lg h-[80vh] overflow-hidden relative p-1 !rounded-[0.4rem]">
-            <div className="flex h-full " >
-              <div className="left w-1/3  h-full bg-[url('https://img.freepik.com/free-photo/black-friday-elements-assortment_23-2149074075.jpg')] bg-cover bg-center ">
-              </div>
-              <div className="right w-2/3 relative flex bg-white justify-center items-center h-full">
-                {
-                  logSign ? <Login logSign={logSign} setlogSign={setlogSign} /> :
+            <div className="flex h-full ">
+              <div className="left w-1/3  h-full bg-[url('https://img.freepik.com/free-photo/black-friday-elements-assortment_23-2149074075.jpg')] bg-cover bg-center "></div>
+              <div className="relative flex items-center justify-center w-2/3 h-full bg-white right">
+                {logSign ? (
+                  <Login logSign={logSign} setlogSign={setlogSign} />
+                ) : (
                   <SignIn logSign={logSign} setlogSign={setlogSign} />
-                }
-                <div onClick={()=>setlogSign(!logSign)} className={`absolute -left-[8rem] ${logSign ? "bg-white" : null} top-40 text-xl p-3 rounded-l-xl px-10`}  >
+                )}
+                <div
+                  onClick={() => setlogSign(!logSign)}
+                  className={`absolute -left-[8rem] ${
+                    logSign ? "bg-white" : null
+                  } top-40 text-xl p-3 rounded-l-xl px-10`}
+                >
                   Login
                 </div>
-                <div onClick={()=>setlogSign(!logSign)} className={`absolute -left-[8rem] ${!logSign ? "bg-white" : null} top-56 text-xl p-3 rounded-l-xl px-10 `} >
+                <div
+                  onClick={() => setlogSign(!logSign)}
+                  className={`absolute -left-[8rem] ${
+                    !logSign ? "bg-white" : null
+                  } top-56 text-xl p-3 rounded-l-xl px-10 `}
+                >
                   Signin
                 </div>
               </div>
             </div>
-            <form method="dialog" className=" bottom-3 right-2 absolute " >
+            <form method="dialog" className="absolute bottom-3 right-2">
               <button className="btn">Close</button>
             </form>
           </div>

@@ -1,58 +1,44 @@
-import React from 'react'
+import React from "react";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { removeFromCart } from "../redux/cartReducer";
 
-const CartItem = () => {
+const CartItem = ({ item }) => {
+  const dispatch = useDispatch();
+
+  const handleRemoveFromCart = () => {
+    dispatch(removeFromCart(item._id));
+  };
+
   return (
-    <div>
-        <table className="table table-lg">
-            {/* head */}
-            <thead>
-            <tr  >
-                <th>
-                <label>
-                    <input type="checkbox" className="checkbox" />
-                </label>
-                </th>
-                <th className='font-bold' >Product Details</th>
-                <th className='font-bold' >Job</th>
-                <th className='font-bold' >Favorite Color</th>
-                <th className='font-bold' ></th>
-            </tr>
-            </thead>
-            <tbody>
-                      {/* row 1 */}
-                    <tr>
-                        <th>
-                        <label>
-                            <input type="checkbox" className="checkbox" />
-                        </label>
-                        </th>
-                        <td>
-                        <div className="flex items-center gap-3">
-                            <div className="avatar">
-                            <div className="mask mask-squircle w-12 h-12">
-                                <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
-                            </div>
-                            </div>
-                            <div>
-                            <div className="font-bold">Hart Hagerty</div>
-                            <div className="text-sm opacity-50">United States</div>
-                            </div>
-                        </div>
-                        </td>
-                        <td>
-                        Zemlak, Daniel and Leannon
-                        <br/>
-                        <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
-                        </td>
-                        <td>Purple</td>
-                        <th>
-                        <button className="btn btn-ghost btn-xs">details</button>
-                        </th>
-                    </tr>
-            </tbody>
-        </table>
+    <div className="flex items-center p-4 mb-4 bg-white rounded-md shadow-md">
+      <div className="mr-4">
+        <input type="checkbox" className="checkbox" />
+      </div>
+      <div className="flex items-center flex-grow">
+        <div className="w-16 h-16 overflow-hidden rounded-full">
+          <img
+            src={item.image}
+            alt="Product Image"
+            className="object-cover w-full h-full"
+          />
+        </div>
+        <div className="ml-4">
+          <div className="font-bold">{item.title}</div>
+          <div className="text-sm font-medium text-gray-500">
+            {item.rating.rate}
+          </div>
+        </div>
+      </div>
+      <div className="font-bold">Rs.{item.price}</div>
+      <Link to={`/product/${item._id}`} className="ml-4 btn btn-primary">
+        Details
+      </Link>
+      <button onClick={handleRemoveFromCart} className="ml-4 btn btn-primary">
+        Remove
+      </button>
     </div>
-  )
-}
+  );
+};
 
-export default CartItem
+export default CartItem;

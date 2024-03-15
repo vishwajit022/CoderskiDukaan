@@ -28,7 +28,7 @@ function Home() {
   useEffect(() => {
     const delay = setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 13000);
 
     return () => clearTimeout(delay);
   }, []);

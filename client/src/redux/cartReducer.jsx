@@ -29,3 +29,11 @@ export const cartAsync = (_id) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const removeFromCartAsync = (_id) => async (dispatch) => {
+  try {
+    dispatch(removeFromCart(_id));
+  } catch (error) {
+    console.log(error);
+  }
+};
