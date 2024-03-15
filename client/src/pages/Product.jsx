@@ -24,7 +24,7 @@ function Product() {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/v1/products/${id}`
+        `https://coderskidukaan.onrender.com/api/v1/products/${id}`
       );
       setData(response.data); // Assuming your data is in response.data
       const roundedRating = Math.round(response.data.rating.rate);

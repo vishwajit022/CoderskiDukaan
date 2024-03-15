@@ -19,7 +19,7 @@ export default categorySlice.reducer;
 export const categoryAsync = () => async (dispatch) => {
   try {
     axios
-      .get("http://localhost:5000/api/v1/categories")
+      .get("https://coderskidukaan.onrender.com/api/v1/categories")
       .then((res) => dispatch(categorySlice.actions.cat(res.data)))
       .catch((err) => console.log(err));
   } catch (error) {

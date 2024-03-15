@@ -22,7 +22,7 @@ export default cartSlice.reducer;
 export const cartAsync = (_id) => async (dispatch) => {
   try {
     const response = await axios.get(
-      `http://localhost:5000/api/v1/products/${_id}`
+      `https://coderskidukaan.onrender.com/api/v1/products/${_id}`
     );
     dispatch(addToCart(response.data));
   } catch (error) {

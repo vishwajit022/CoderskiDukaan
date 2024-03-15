@@ -54,7 +54,7 @@ function Nav() {
               <div className="">Built</div>
               <div className="mt-[-7px]"> with 💖</div>
             </div>
-            <img src="/public/download.png" className="h-10" alt="" />
+            <img src="/download.png" className="h-10" alt="" />
           </div>
         </div>
 
