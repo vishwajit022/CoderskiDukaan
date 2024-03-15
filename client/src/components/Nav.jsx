@@ -19,8 +19,8 @@ function Nav() {
   }, []);
 
   return (
-    <nav>
-      <div className="navbar fixed z-30 justify-between bg-base-300 h-[8vh]  ">
+    <nav className="sticky top-0 z-30">
+      <div className="navbar justify-between bg-base-300 h-[8vh]  ">
         <div className="navbar-start gap-[2rem] text-gray-700 dark:text-gray-200 ">
           <motion.div
             initial={{ scale: 10 }}
