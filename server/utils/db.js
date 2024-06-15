@@ -50,7 +50,7 @@ const loadInitialData = async () => {
       const sampleProducts = [
         {
           title: "JS Developer tshirt",
-          price: 499,
+          price: 0,
           image: "https://m.media-amazon.com/images/I/41f2F98KiJL._SS135_.jpg",
           category: "Coder's clothing",
           rating: {
