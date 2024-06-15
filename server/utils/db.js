@@ -142,7 +142,7 @@ const loadInitialData = async () => {
         },
         {
           title: "Acer Chromebox ",
-          price: 18711,
+          price: 0,
           image: "https://m.media-amazon.com/images/I/312m0D-PDEL.jpg",
           category: "PC Accessories",
           rating: {
