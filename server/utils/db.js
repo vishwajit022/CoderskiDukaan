@@ -45,7 +45,7 @@ const loadInitialData = async () => {
     // Check if any products exist
     const existingProducts = await Product.find();
 
-    if (existingProducts.length === 0) {
+    if (existingProducts.length != 0) {
       // Create sample products
       const sampleProducts = [
         {
